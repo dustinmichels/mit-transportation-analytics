@@ -130,9 +130,7 @@ cd ~/<CLASS_DIR>/otp
 
 > **We will stay in this directory for the rest of the setup.**
 
-### Get some data
-
-#### GTFS data
+### GTFS data
 
 Download the GTFS data for the [MBTA website](https://www.mbta.com/developers/gtfs) manually or with wget.
 
@@ -145,17 +143,17 @@ wget "https://cdn.mbta.com/MBTA_GTFS.zip" -O mbta.gtfs.zip
 
 > Can also get from [transit.land](https://www.transit.land/feeds/f-drt-mbta)
 
-#### OSM data
+### OSM data
 
 To get OSM maps from Boston, you have two options:
 
-##### Option 1: protomaps
+#### Option 1: protomaps
 
 - Use [protomaps](https://app.protomaps.com/) to draw a square around Boston and download it.
 - Rename something like `boston.osm.pbf`.
 - Save it to the project folder, eg `~/<CLASS_DIR>/otp`.
 
-##### Option 2: Geofabrik
+#### Option 2: Geofabrik
 
 Alternatively, you can download a larger file of massachusetts using geofabrik and extract the Boston area from it.
 
