@@ -44,7 +44,7 @@ asdf plugin add java
 # install a specific version (for example, temurin-21 worked for me)
 asdf install java latest:temurin-21
 
-# set the global version
+# set this as the default java
 asdf global java temurin-21.0.5+11.0.LTS
 ```
 
