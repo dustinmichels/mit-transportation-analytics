@@ -117,7 +117,7 @@ otp
 > 23:33:31.480 ERROR [main]  (OTPMain.java:93) Parameter error: You must supply a single directory name.
 ```
 
-This indicates that the alias is working.
+This indicates that the alias is working 👍.
 
 ## Part 2: Setup local project with Boston data
 
