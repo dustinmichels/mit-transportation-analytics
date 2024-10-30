@@ -187,6 +187,12 @@ otp --build --serve .
 
 > NOTE: `otp` is an alias for `java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar`
 
+If everything works, the trip planner should be running at `http://localhost:8080/`.
+
+The interface should look something like this:
+
+![OTP Interface](img/screenshot.png)
+
 ### Build and serve separately
 
 Since building is slow, you can break this up into two steps.
@@ -199,8 +205,17 @@ otp --build --save .
 otp --load .
 ```
 
-If everything works, the trip planner should be running at `http://localhost:8080/`.
+### Build street data separately
 
-The interface should look something like this:
+You can break things down even further by first building the street data, then layering the OSM data on top of that, then running the server.
 
-![OTP Interface](img/screenshot.png)
+```sh
+# build street graph with OSM data
+otp --buildStreet .
+
+# build graph layering OSM data onto street data
+otp --loadStreet --save .
+
+# run server
+otp --load .
+```
