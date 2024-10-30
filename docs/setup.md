@@ -30,6 +30,8 @@ If the proper version is missing, you can install a few different ways, dependin
 brew install openjdk@21
 ```
 
+- With homebrew, it's easy to install a specific version, but if you have multiple versions installed, takes some extra steps to configure which one is active.
+
 #### Option 2: asdf
 
 Alternatively, [asdf](https://asdf-vm.com/guide/getting-started.html) can be a good tool for installing and managing specific versions of various tools, including Java. Using asdf could look like this:
