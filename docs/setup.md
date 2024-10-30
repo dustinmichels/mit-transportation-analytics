@@ -190,4 +190,4 @@ If everything works, the trip planner should be running at `http://localhost:808
 
 The interface should look something like this:
 
-![OTP Interface](screenshot.png)
+![OTP Interface](img/screenshot.png)
