@@ -12,13 +12,13 @@ First, we want to setup [OTP](https://github.com/opentripplanner/OpenTripPlanner
 
 Check if java is installed by running:
 
-```sh
+```bash
 java -version
 ```
 
 If multiple versions of java may be installed, you can check which one is active by running:
 
-```sh
+```bash
 which java
 ```
 
@@ -26,7 +26,7 @@ If the proper version is missing, you can install a few different ways, dependin
 
 #### Option 1: Homebrew
 
-```sh
+```bash
 brew install openjdk@21
 ```
 
@@ -34,7 +34,7 @@ brew install openjdk@21
 
 Alternatively, [asdf](https://asdf-vm.com/guide/getting-started.html) can be a good tool for installing and managing specific versions of various tools, including Java. Using asdf could look like this:
 
-```sh
+```bash
 # install asdf
 brew install asdf
 
@@ -60,7 +60,7 @@ I suggest `~/dev`, which can be a reusable home for other small dev tools.
 
 Via the command line:
 
-```sh
+```bash
 # create directory if it doesn't exist
 mkdir -p ~/dev
 
@@ -77,7 +77,7 @@ wget https://repo1.maven.org/maven2/org/opentripplanner/otp/2.6.0/otp-2.6.0-shad
 
 We will eventually (not yet!) run OTP from the command line with the commands like:
 
-```sh
+```bash
 java -Xmx2G -jar otp-2.6.0-shaded.jar --build --serve .
 ```
 
@@ -85,7 +85,7 @@ To make it simpler to run this tool from anywhere, we can create an alias.
 
 For newer versions of MacOS, zsh is the default shell, so aliases will probably live inside a `.zshrc` config file, which should be in your home directory.
 
-```sh
+```bash
 # add alias to zshrc file
 echo "alias otp='java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar'" >> ~/.zshrc
 
@@ -97,7 +97,7 @@ You should now be able to run the command `otp` from anywhere!
 
 Since we don't yet have data to provide, if you try, you should get a parameter error.
 
-```sh
+```bash
 otp
 
 > 23:33:31.480 ERROR [main]  (OTPMain.java:93) Parameter error: You must supply a single directory name.
@@ -109,7 +109,7 @@ Next, we want to make a specific project directory with local boston data to run
 
 Make a directory for the project, like `~/<CLASS_DIR>/otp` (where `<CLASS_DIR>` is a placeholder for the directory you want to use for this class).
 
-```sh
+```bash
 mkdir -p ~/<CLASS_DIR>/otp
 cd ~/<CLASS_DIR>/otp
 ```
@@ -122,7 +122,7 @@ cd ~/<CLASS_DIR>/otp
 
 Download the GTFS data for the [MBTA website](https://www.mbta.com/developers/gtfs).
 
-```sh
+```bash
 wget "https://cdn.mbta.com/MBTA_GTFS.zip" -O mbta.gtfs.zip
 ```
 
@@ -168,7 +168,7 @@ From the project directory (eg, `~/<CLASS_DIR>/otp`), we can now run the OTP too
 
 To build and serve in a single step, run the following command:
 
-```sh
+```bash
 otp --build --serve .
 ```
 
@@ -178,7 +178,7 @@ otp --build --serve .
 
 Since building is slow, you can break this up into two steps.
 
-```sh
+```bash
 # build graph
 otp --build --save .
 
