@@ -85,7 +85,7 @@ We will eventually (not yet!) run OTP from the command line with the commands li
 java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar [args]
 ```
 
-To make things simpler, we can create an "alias" for the first part of the command, allowing us to instead run from anywhere:
+To make things simpler, we could (optionally) create an "alias" for the first part of the command, allowing us to instead run from anywhere:
 
 ```sh
 otp [args]
@@ -232,13 +232,15 @@ osmium extract massachusetts-200101.osm.pbf -b -71.874747,42.210768,-70.769248,4
 
 From the project directory (eg, `~/<CLASS_DIR>/otp`), we can now run the OTP tool with the data we have.
 
+### Build and serve
+
 To build and serve in a single step, run the following command:
 
 ```sh
 otp --build --serve .
 ```
 
-> 💡 `otp` is an alias for `java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar`
+> ⚠️ If you did not configure the alias, use `java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar` instead of `otp`.
 
 If everything works, the trip planner should be running at `http://localhost:8080/`.
 
@@ -272,3 +274,5 @@ otp --loadStreet --save .
 # run server
 otp --load .
 ```
+
+> ⚠️ Again, if you did not configure the alias, use `java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar` instead of `otp`.
