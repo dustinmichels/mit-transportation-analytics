@@ -8,7 +8,7 @@ First, we want to setup [OTP](https://github.com/opentripplanner/OpenTripPlanner
 
 ### [Prerequisite] Install Java
 
-> "OTP must be run within a Java virtual machine (JVM), which is provided as part of the Java runtime (JRE) or Java development kit (JDK). OTP2 is compatible with Java 21 or later."
+> _"OTP must be run within a Java virtual machine (JVM), which is provided as part of the Java runtime (JRE) or Java development kit (JDK). OTP2 is compatible with Java 21 or later."_ ([OTP Tutorial](https://docs.opentripplanner.org/en/v2.6.0/Basic-Tutorial/))
 
 Check if java is installed by running:
 
@@ -35,16 +35,16 @@ brew install openjdk@21
 Alternatively, [asdf](https://asdf-vm.com/guide/getting-started.html) can be a good tool for installing and managing specific versions of various tools, including Java. Using asdf could look like this:
 
 ```sh
-# install asdf
+# install asdf (if not already installed)
 brew install asdf
 
-# install java plugin
+# install asdf's java plugin (if not already installed)
 asdf plugin add java
 
-# install a specific version (for example, temurin-21 worked for me)
+# install a specific version of java (eg, temurin-21)
 asdf install java latest:temurin-21
 
-# set this as the default java
+# set this as the default, system-wide java
 asdf global java temurin-21.0.5+11.0.LTS
 ```
 
@@ -73,14 +73,14 @@ cd ~/dev
 wget https://repo1.maven.org/maven2/org/opentripplanner/otp/2.6.0/otp-2.6.0-shaded.jar
 ```
 
-> If 'wget' is not installed, you can install it with `brew install wget`.
+> 💡 If 'wget' is not installed, you can install it with `brew install wget`.
 
 ### Create an alias
 
 We will eventually (not yet!) run OTP from the command line with the commands like:
 
 ```sh
-java -Xmx2G -jar otp-2.6.0-shaded.jar [args]
+java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar [args]
 ```
 
 To make things simpler, we can create an "alias" for the first part of the command, allowing us to instead run from anywhere:
@@ -128,7 +128,7 @@ mkdir -p ~/<CLASS_DIR>/otp
 cd ~/<CLASS_DIR>/otp
 ```
 
-> **We will stay in this directory for the rest of the setup.**
+> ⚠️ **We will stay in this directory for the rest of the setup.**
 
 ### GTFS data
 
@@ -141,7 +141,7 @@ Download the GTFS data for the [MBTA website](https://www.mbta.com/developers/gt
 wget "https://cdn.mbta.com/MBTA_GTFS.zip" -O mbta.gtfs.zip
 ```
 
-> Can also get from [transit.land](https://www.transit.land/feeds/f-drt-mbta)
+> 💡 Can also get from [transit.land](https://www.transit.land/feeds/f-drt-mbta)
 
 ### OSM data
 
@@ -187,7 +187,7 @@ To build and serve in a single step, run the following command:
 otp --build --serve .
 ```
 
-> NOTE: `otp` is an alias for `java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar`
+> 💡 `otp` is an alias for `java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar`
 
 If everything works, the trip planner should be running at `http://localhost:8080/`.
 
