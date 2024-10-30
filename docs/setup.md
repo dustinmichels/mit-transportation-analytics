@@ -136,12 +136,12 @@ cd ~/<CLASS_DIR>/otp
 
 ### Option 1: Get data via config file
 
-One way to get data for OTP is to use a config file that specifies the data sources.
+If you specify urls to data sources in a `build-config.json` file, OTP can download the data for you.
 
 - **PRO:** This is super easy.
 - **CON:** The files you download by url are large and will make everything slow. If you gather data manually, you can trim it to be smaller and lighter.
 
-Create a file called `build-config.json`
+Create a file called `build-config.json` in your project directory.
 
 - Here is the one used by in the [MBTA's otp-deploy repo](https://github.com/mbta/otp-deploy/blob/master/var/build-config.json), which we can use as a starting place.
 - It includes a few additional configurations, but you can clearly see links to data sources provided under the properties `osm > source` and `transitFeeds > source`.
