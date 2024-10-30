@@ -4,12 +4,7 @@
   "embedRouterConfig": false,
   "osm": [
     {
-      "source": "https://download.geofabrik.de/north-america/us/massachusetts-latest.osm.pbf",
-      "timeZone": "America/New_York",
-      "osmTagMapping": "default"
-    },
-    {
-      "source": "https://download.geofabrik.de/north-america/us/rhode-island-latest.osm.pbf",
+      "source": "data/boston.osm.pbf",
       "timeZone": "America/New_York",
       "osmTagMapping": "default"
     }
@@ -21,13 +16,7 @@
   "transitFeeds": [
     {
       "type": "gtfs",
-      "feedId": "massport-ma-us",
-      "source": "https://data.trilliumtransit.com/gtfs/massport-ma-us/massport-ma-us.zip"
-    },
-    {
-      "type": "gtfs",
-      "feedId": "mbta-ma-us",
-      "source": "https://mbta-gtfs-s3.s3.amazonaws.com/google_transit.zip"
+      "source": "data/mbta.gtfs.zip"
     }
   ],
   "transferRequests": [

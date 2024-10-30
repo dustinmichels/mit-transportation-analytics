@@ -136,23 +136,20 @@ cd ~/<CLASS_DIR>/otp
 
 ### Option 1: Get data via config file
 
-If you specify urls to data sources in a `build-config.json` file, OTP can download the data for you.
+If you specify urls to data sources in a `build-config.json` file, OTP can download the data for you. See [docs](https://docs.opentripplanner.org/en/v2.6.0/BuildConfiguration/).
 
 - **PRO:** This is super easy.
 - **CON:** The files you download by url are large and will make everything slow. If you gather data manually, you can trim it to be smaller and lighter.
 
-Create a file called `build-config.json` in your project directory.
+Create a file called `build-config.json` in your project directory and populate it.
 
-- Here is the one used by in the [MBTA's otp-deploy repo](https://github.com/mbta/otp-deploy/blob/master/var/build-config.json), which we can use as a starting place.
-- It includes a few additional configurations, but you can clearly see links to data sources provided under the properties `osm > source` and `transitFeeds > source`.
+Here is a minimal example, based on the one in the [MBTA's otp-deploy repo](https://github.com/mbta/otp-deploy/blob/master/var/build-config.json). You could also copy that entire file which seems to include some other sensible configurations as well.
 
 `build-config.json`
 
 ```json
 {
-  "boardingLocationTags": ["gtfs:stop_id", "ref"],
   "dataImportReport": true,
-  "embedRouterConfig": false,
   "osm": [
     {
       "source": "https://download.geofabrik.de/north-america/us/massachusetts-latest.osm.pbf",
@@ -165,10 +162,6 @@ Create a file called `build-config.json` in your project directory.
       "osmTagMapping": "default"
     }
   ],
-  "osmCacheDataInMem": "true",
-  "osmDefaults": {
-    "timeZone": "America/New_York"
-  },
   "transitFeeds": [
     {
       "type": "gtfs",
@@ -179,17 +172,6 @@ Create a file called `build-config.json` in your project directory.
       "type": "gtfs",
       "feedId": "mbta-ma-us",
       "source": "https://mbta-gtfs-s3.s3.amazonaws.com/google_transit.zip"
-    }
-  ],
-  "transferRequests": [
-    {
-      "modes": "WALK"
-    },
-    {
-      "modes": "WALK",
-      "wheelchairAccessibility": {
-        "enabled": true
-      }
     }
   ]
 }
