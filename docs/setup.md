@@ -213,7 +213,7 @@ You can break things down even further by first building the street data, then l
 # build street graph with OSM data
 otp --buildStreet .
 
-# build graph layering OSM data onto street data
+# build graph layering transit data onto street data
 otp --loadStreet --save .
 
 # run server
