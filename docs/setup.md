@@ -83,7 +83,11 @@ We will eventually (not yet!) run OTP from the command line with the commands li
 java -Xmx2G -jar otp-2.6.0-shaded.jar [args]
 ```
 
-To make it simpler to run this tool from anywhere, we can create an "alias" for the first part of the command.
+To make things simpler, we can create an "alias" for the first part of the command, allowing us to instead run from anywhere:
+
+```sh
+otp [args]
+```
 
 For newer versions of MacOS, zsh is the default shell, so aliases will probably live inside a `.zshrc` config file, which should be in your home directory.
 
@@ -97,9 +101,9 @@ echo "alias otp='java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar'" >> ~/.zshrc
 source ~/.zshrc
 ```
 
-> You can also manually open ~/.zshrc in a text editor and add the line `alias otp='java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar'` to the end of the file.
-
-> On older versions of mac this could be in a `.bashrc` or `.bash_profile` file.
+> - You can also manually open ~/.zshrc in a text editor and add the line `alias otp='java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar'` to the end of the file.
+>
+> - On older versions of mac this could be in a `.bashrc` or `.bash_profile` file.
 
 You should now be able to run the command `otp` from anywhere!
 
