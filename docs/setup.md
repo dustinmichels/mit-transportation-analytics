@@ -52,11 +52,13 @@ asdf global java temurin-21.0.5+11.0.LTS
 
 Alternatively, install from [the java website](https://www.java.com/en/download/manual.jsp).
 
+- This might be the easiest way to install, but more challenging to manage, especially if you want other specific versions installed in the future.
+
 ### Download OTP
 
 Download the file "otp-2.6.0-shaded.jar" from the [OTP releases page](https://repo1.maven.org/maven2/org/opentripplanner/otp/2.6.0/) and save it to a good directory.
 
-I suggest `~/dev`, which can be a reusable home for other small dev tools.
+I suggest `~/dev`, which can be a reusable home for other small developer tools.
 
 Via the command line:
 
@@ -78,30 +80,38 @@ wget https://repo1.maven.org/maven2/org/opentripplanner/otp/2.6.0/otp-2.6.0-shad
 We will eventually (not yet!) run OTP from the command line with the commands like:
 
 ```sh
-java -Xmx2G -jar otp-2.6.0-shaded.jar --build --serve .
+java -Xmx2G -jar otp-2.6.0-shaded.jar [args]
 ```
 
-To make it simpler to run this tool from anywhere, we can create an alias.
+To make it simpler to run this tool from anywhere, we can create an "alias" for the first part of the command.
 
 For newer versions of MacOS, zsh is the default shell, so aliases will probably live inside a `.zshrc` config file, which should be in your home directory.
+
+From the command line:
 
 ```sh
 # add alias to zshrc file
 echo "alias otp='java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar'" >> ~/.zshrc
 
-# source file to apply changes
+# re-load file to apply changes
 source ~/.zshrc
 ```
 
+> You can also manually open ~/.zshrc in a text editor and add the line `alias otp='java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar'` to the end of the file.
+
+> On older versions of mac this could be in a `.bashrc` or `.bash_profile` file.
+
 You should now be able to run the command `otp` from anywhere!
 
-Since we don't yet have data to provide, if you try, you should get a parameter error.
+If you try running the command by itself, you should get an error like this saying a parameter is missing:
 
 ```sh
 otp
 
 > 23:33:31.480 ERROR [main]  (OTPMain.java:93) Parameter error: You must supply a single directory name.
 ```
+
+This indicates that the alias is working.
 
 ## Part 2: Setup local project with Boston data
 
@@ -120,9 +130,12 @@ cd ~/<CLASS_DIR>/otp
 
 #### GTFS data
 
-Download the GTFS data for the [MBTA website](https://www.mbta.com/developers/gtfs).
+Download the GTFS data for the [MBTA website](https://www.mbta.com/developers/gtfs) manually or with wget.
 
 ```sh
+# make sure we are in the project directory
+# Eg, cd ~/<CLASS_DIR>/otp
+
 wget "https://cdn.mbta.com/MBTA_GTFS.zip" -O mbta.gtfs.zip
 ```
 
@@ -151,7 +164,7 @@ brew install osmium-tool
 
 ```sh
 # make sure we are in the project directory
-cd ~/<CLASS_DIR>/otp
+# Eg, cd ~/<CLASS_DIR>/otp
 
 # download the massachusetts file from geofabrik
 wget https://download.geofabrik.de/north-america/us/massachusetts-200101.osm.pbf
