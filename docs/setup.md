@@ -77,7 +77,7 @@ wget https://repo1.maven.org/maven2/org/opentripplanner/otp/2.6.0/otp-2.6.0-shad
 
 > 💡 If 'wget' is not installed, you can install it with `brew install wget`.
 
-### Create an alias
+### [Optional] Create an alias
 
 We will eventually (not yet!) run OTP from the command line with the commands like:
 
@@ -93,6 +93,8 @@ otp [args]
 
 For newer versions of MacOS, zsh is the default shell, so aliases will probably live inside a `.zshrc` config file, which should be in your home directory.
 
+> 💡 On older versions of mac this could be in a `.bashrc` or `.bash_profile` file.
+
 From the command line:
 
 ```sh
@@ -103,9 +105,9 @@ echo "alias otp='java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar'" >> ~/.zshrc
 source ~/.zshrc
 ```
 
-> - You can also manually open ~/.zshrc in a text editor and add the line `alias otp='java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar'` to the end of the file.
->
-> - On older versions of mac this could be in a `.bashrc` or `.bash_profile` file.
+You can also manually open ~/.zshrc in a text editor and add the line `alias otp='java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar'` to the end of the file.
+
+> 💡 If you ever run into memory issues, you could try increasing the amount of mem alloted to java by changing `-Xmx2G` to `-Xmx8G`
 
 You should now be able to run the command `otp` from anywhere!
 
@@ -132,7 +134,73 @@ cd ~/<CLASS_DIR>/otp
 
 > ⚠️ **We will stay in this directory for the rest of the setup.**
 
-### GTFS data
+### Option 1: Get data via config file
+
+One way to get data for OTP is to use a config file that specifies the data sources.
+
+- **PRO:** This is super easy.
+- **CON:** The files you download by url are large and will make everything slow. If you gather data manually, you can trim it to be smaller and lighter.
+
+#### Create a file called `build-config.json`
+
+Here is the one used by in the [MBTA's otp-deploy repo](https://github.com/mbta/otp-deploy/blob/master/var/build-config.json), which we can use as a starting place.
+
+It includes a few additional configurations, but you can clearly see links to data sources provided under the properties `osm > source` and `transitFeeds > source`.
+
+`build-config.json`
+
+```json
+{
+  "boardingLocationTags": ["gtfs:stop_id", "ref"],
+  "dataImportReport": true,
+  "embedRouterConfig": false,
+  "osm": [
+    {
+      "source": "https://download.geofabrik.de/north-america/us/massachusetts-latest.osm.pbf",
+      "timeZone": "America/New_York",
+      "osmTagMapping": "default"
+    },
+    {
+      "source": "https://download.geofabrik.de/north-america/us/rhode-island-latest.osm.pbf",
+      "timeZone": "America/New_York",
+      "osmTagMapping": "default"
+    }
+  ],
+  "osmCacheDataInMem": "true",
+  "osmDefaults": {
+    "timeZone": "America/New_York"
+  },
+  "transitFeeds": [
+    {
+      "type": "gtfs",
+      "feedId": "massport-ma-us",
+      "source": "https://data.trilliumtransit.com/gtfs/massport-ma-us/massport-ma-us.zip"
+    },
+    {
+      "type": "gtfs",
+      "feedId": "mbta-ma-us",
+      "source": "https://mbta-gtfs-s3.s3.amazonaws.com/google_transit.zip"
+    }
+  ],
+  "transferRequests": [
+    {
+      "modes": "WALK"
+    },
+    {
+      "modes": "WALK",
+      "wheelchairAccessibility": {
+        "enabled": true
+      }
+    }
+  ]
+}
+```
+
+### Option 2: Get data manually
+
+If we gather the data manually, we don't need that config file.
+
+#### GTFS data
 
 Download the GTFS data for the [MBTA website](https://www.mbta.com/developers/gtfs) manually or with wget.
 
@@ -145,17 +213,17 @@ wget "https://cdn.mbta.com/MBTA_GTFS.zip" -O mbta.gtfs.zip
 
 > 💡 Can also get from [transit.land](https://www.transit.land/feeds/f-drt-mbta)
 
-### OSM data
+#### OSM data
 
 To get OSM maps from Boston, you have two options:
 
-#### Option 1: protomaps
+##### Option 1: protomaps
 
 - Use [protomaps](https://app.protomaps.com/) to draw a square around Boston and download it.
 - Rename something like `boston.osm.pbf`.
 - Save it to the project folder, eg `~/<CLASS_DIR>/otp`.
 
-#### Option 2: Geofabrik
+##### Option 2: Geofabrik
 
 Alternatively, you can download a larger file of massachusetts using geofabrik and extract the Boston area from it.
 
