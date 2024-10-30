@@ -1,3 +1,3 @@
 # MIT - Transportation Analytics Class
 
-- [Setup OTP](setup.md)
+- [setup OTP](setup)
