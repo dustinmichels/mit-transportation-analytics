@@ -290,5 +290,3 @@ java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar --buildStreet .
 java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar --loadStreet --save .
 java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar --load .
 ```
-
-> ⚠️ Again, if you did not configure the alias, use `java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar` instead of `otp`.
