@@ -245,7 +245,7 @@ otp --build --serve .
 java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar --build --serve .
 ```
 
-If everything works, the trip planner should be running at `http://localhost:8080/`.
+If everything works, the trip planner should be running at [`http://localhost:8080/`](http://localhost:8080).
 
 The interface should look something like this:
 
