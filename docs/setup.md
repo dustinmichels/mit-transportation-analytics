@@ -240,7 +240,10 @@ To build and serve in a single step, run the following command:
 otp --build --serve .
 ```
 
-> ⚠️ If you did not configure the alias, use `java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar` instead of `otp`.
+```sh
+# OR, without the alias
+java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar --build --serve .
+```
 
 If everything works, the trip planner should be running at `http://localhost:8080/`.
 
@@ -260,6 +263,12 @@ otp --build --save .
 otp --load .
 ```
 
+```sh
+# OR, without the alias
+java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar --build --save .
+java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar --load .
+```
+
 ### Build street data separately
 
 You can break things down even further by first building the street data, then layering the OSM data on top of that, then running the server.
@@ -273,6 +282,13 @@ otp --loadStreet --save .
 
 # run server
 otp --load .
+```
+
+```sh
+# OR, without the alias
+java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar --buildStreet .
+java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar --loadStreet --save .
+java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar --load .
 ```
 
 > ⚠️ Again, if you did not configure the alias, use `java -Xmx2G -jar ~/dev/otp-2.6.0-shaded.jar` instead of `otp`.
