@@ -12,14 +12,15 @@ To do so, I ran a local instance of OpenTripPlanner (OTP) on my machine, based o
 2. Since the Logan Airport is a common destination, extra care should be taken to make trip planning more clear and ergonomic. This may involve:
    - Ensuring that the Silver Line is presented as a single route, regardless of the terminal you depart at.
    - Improving the geocoding of the airport to provide a more meaningful endpoint.
+3. Despite the costs, the MBTA should continue to maintain an in-house trip planning app to promote positive user experiences in powerful ways.
 
 ## Case study: MIT to Logan Airport
 
-One trip that was interrogated goes from MIT to the Logan Airport. The MBTA's transit planner provides two trip suggestions, both of which have some counterintuitive elements.
+One trip that was investigated goes from MIT to the Logan Airport. The MBTA's transit planner provides two trip suggestions, both of which have some counterintuitive elements.
 
 ![MIT to Airport](img/trip1_mbta.png)
 
-### Two silver lines
+### Issue 1: Two silver lines
 
 The first trip suggestion involves taking the Red Line from Kendall/MIT to South Station, then transferring to the Silver Line SL1 to the airport. What is strange is that this trip appears to involve _two_ silver lines.
 
@@ -40,7 +41,7 @@ How?
 - This confusing result most likely arises from the GTFS data provided by the MBTA. It is not an "error" because once the Silver Line bus has reached terminal A it is indeed headed back to South Station, and passengers need that to be reflected to them. Changing the underlying data to mark Terminal C as the end of the line would create the same issue for passengers leaving the airport from Terminal A.
 - Thus, it would be preferable to code an exception into the MBTA app, downstream of the underlying data, which detects this specific issue and presents the Silver Line as a single route to the airport, regardless of the terminal you depart at.
 
-### Park street transfer
+### Issue 2: Park street transfer
 
 For the second suggested trip, one thing that is notable is an alert for the Park Street station which, when toggled open, reveals the elevator is broken.
 
@@ -57,7 +58,7 @@ How?
 - It will also be necessary to audit the mechanism by which service alerts are delivered to determine how they can be tied to station data to filter out inaccessible trips.
 - _NOTE_: MBTA developers have already made efforts to increase details about stations presented in the GTFS data, and real-time trip accessibility is already [a stated goal.](https://medium.com/@stephclewis/enriching-our-station-data-in-gtfs-8d03c1583c42)
 
-### Non-meaningful final destination
+### Issue 3: Non-meaningful final destination
 
 Both trip suggestions suffer from a minor geocoding issue that makes results less ergonomic. When "Logan Airport" is entered into the MBTA trip planning tool, a pin is dropped on the map that does not represent a meaningful endpoint.
 
