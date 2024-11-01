@@ -22,13 +22,13 @@ In `router-config.json`, there is a setting under `routingDefaults > itineraryFi
 
 ## Case Studies
 
-### (1) MIT to Airport
+### (Case 1) MIT to Airport
 
 One trip I looked at was from MIT to the Logan Airport. It provides two trip suggestions, both of which have some counterintuitive elements.
 
 ![MIT to Airport](img/trip1_mbta.png)
 
-#### Suggestion A
+#### Trip 1 - Two Silver Lines
 
 The first trip suggestion involves taking the Red Line from Kendall/MIT to South Station, then transferring to the Silver Line SL1 to the airport. What is strange is that this trip appears to involve _two_ silver lines.
 
@@ -40,4 +40,16 @@ The same issue can be seen in the OTP trip suggestion, which provides some addit
 
 ![MIT to Airport](img/trip1_otp.png)
 
-It seems as soon as the bus reaches terminal A the route changes: it is now headed to south station instead of to the airport. This makes sense, since passengers leaving the airport from Terminal A would be seeking a bus headed towards South Station. But it creates confusion if you are headed _to_ Terminal C of the airport, making it appear as if you need to change buses when you don't.
+It seems as soon as the bus reaches terminal A the route changes: it is now headed to South Station instead of to the airport. This makes sense, since passengers leaving the airport from Terminal A would be seeking a bus headed towards South Station. But it creates confusion if you are headed _from_ South Station _to_ Terminal C of the airport, making it appear as if you need to change buses when you don't.
+
+> ✔️ **This trip should be updated to show a single Silver Line route from South Station to the airport, regardless of what terminal you depart at.**
+
+#### Trip 2 - Park Street Transfer
+
+For the second suggested trip, one thing that is notable is an alert for the Park Street station which, when toggled open, reveals the elevator is broken.
+
+![MIT to Airport](img/trip1_park.png)
+
+It seems the expectation is for a wheelchair user to notice the warning icon, click to open it, and then read the warning, _after_ the top of the page clearly states that two "wheelchair accessible trips" were found.
+
+> ✔️ **Most likely, this trip should not longer be considered accessible and simply be filtered out of the results.**
